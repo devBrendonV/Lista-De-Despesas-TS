@@ -2,9 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { CssBaseline } from "@mui/material";
-ReactDOM.createRoot(document.getElementById('root')!).render(
+import { ContextProvider } from "./Context/index.js";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <ContextProvider>
       <App />
-      <CssBaseline/>
+    </ContextProvider>
+    <CssBaseline />
   </React.StrictMode>
 );
