@@ -3,7 +3,13 @@ import { Context } from "../../Context";
 import { Box, Typography } from "@mui/material";
 
 export const Saldo = () => {
-  const { entrada, saida, total } = useContext(Context);
+  const context = useContext(Context);
+  
+  if(!context){
+    return null
+  }
+
+  const { entrada, saida, total } = context;
   return (
     <Box
     display={"flex"}
