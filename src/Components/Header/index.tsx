@@ -1,7 +1,13 @@
-import React from 'react'
+import { Box } from '@mui/material';
 
 export const Header = () => {
   return (
-    <div>Header</div>
+    <Box 
+    color={"black"} 
+    height={"auto"} 
+    fontSize={30} 
+    display={"flex"}
+    justifyContent={"Center"}
+     >Lista de Despesas</Box>
   )
 }
