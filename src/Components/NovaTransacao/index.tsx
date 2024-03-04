@@ -2,15 +2,14 @@ import { useContext, useState } from "react";
 import { Context } from "../../Context";
 import { Box, Button } from "@mui/material";
 import {OpcoesDeTransacao} from "./OpcoesDeTransacao";
+import {EntradaDeValores} from "./EntradaDeValores";
 import AddIcon from "@mui/icons-material/Add";
 
-type Props = {};
-
-export const NovaTransacao = (props: Props) => {
+export const NovaTransacao = () => {
   const { adicionar,tipoTransacao } = useContext(Context);
 
-  const [texto, setTexto] = useState("");
-  const [valor, setValor] = useState("");
+  const [texto, setTexto] = useState<string>("");
+  const [valor, setValor] = useState<number>(0);
 
   return (
     <Box
@@ -21,12 +20,18 @@ export const NovaTransacao = (props: Props) => {
     >
       <OpcoesDeTransacao />
 
+      <EntradaDeValores
+        value={{ valor: valor, texto: texto }}
+        adicionar={(valor,texto)=>adicionar(valor,texto)}
+        mudarValor={(valor)=>setValor(valor)}
+        mudarTexto={(texto)=>setTexto(texto)}
+      />
       <Button
         startIcon={<AddIcon />}
         style={{
           color: "#180202",
           backgroundColor: `${
-            texto !== "" && valor !== 0 && valor !== ""
+            texto !== "" && valor !== 0 
               ? tipoTransacao
                 ? "#0de429"
                 : "#f70d0dd5"
@@ -35,9 +40,9 @@ export const NovaTransacao = (props: Props) => {
           padding: "10px",
         }}
         onClick={() => {
-          if (texto !== "" && valor !== 0 && valor !== "") {
+          if (texto !== "" && valor !== 0) {
             adicionar(valor, texto);
-            setValor("");
+            setValor(0);
             setTexto("");
           }
         }}
