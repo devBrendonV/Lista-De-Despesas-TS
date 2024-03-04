@@ -8,6 +8,7 @@ interface ContextProps {
   listaGastos: FormatoLista[];
   tipoTransacao: boolean;
   excluirTransacao: (item: FormatoLista, posicao: number)=>void
+  adicionar: (valor:number,texto:string)=>void
 }
 
 export const Context = createContext<ContextProps | undefined>(undefined);
@@ -40,9 +41,26 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({
     }
   };
 
+  const  adicionar= (valor:number,texto:string)=> {
+    if (tipoTransacao == true) {
+      setTotal(total + valor);
+      setEntrada(entrada + valor);
+    }
+    if (tipoTransacao == false) {
+      setTotal(total - valor);
+      setSaida(saida + valor);
+    }
+    setListaGastos([
+      ...listaGastos,
+      { nome: texto, tipo: tipoTransacao, valor: valor },
+    ]);
+  }
+
+
+
   return (
     <Context.Provider
-      value={{ total, entrada, saida, listaGastos, tipoTransacao,excluirTransacao }}
+      value={{ total, entrada, saida, listaGastos, tipoTransacao,excluirTransacao,adicionar }}
     >
       {children}
     </Context.Provider>
