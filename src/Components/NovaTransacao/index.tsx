@@ -6,7 +6,11 @@ import {EntradaDeValores} from "./EntradaDeValores";
 import AddIcon from "@mui/icons-material/Add";
 
 export const NovaTransacao = () => {
-  const { adicionar,tipoTransacao } = useContext(Context);
+  const context = useContext(Context);
+  if(!context){
+    return null
+  }
+  const { adicionar,tipoTransacao } = context;
 
   const [texto, setTexto] = useState<string>("");
   const [valor, setValor] = useState<number>(0);

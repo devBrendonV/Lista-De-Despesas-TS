@@ -13,6 +13,8 @@ type Props = {
 export const EntradaDeValores = (props: Props) => {
     const max = 100000000;
     const min = 0;
+    const {valor,texto} = props.value
+    const {adicionar,mudarValor,mudarTexto} = props
     return (
       <FormControl sx={{ display: "flex", width: "100%", paddingBottom: "25px" }}>
         <TextField
@@ -24,19 +26,19 @@ export const EntradaDeValores = (props: Props) => {
           inputProps={{
             maxLength: 15,
           }}
-          value={props.value.texto}
+          value={texto}
           label="Digite o nome da transação:"
           type="text"
-          onChange={(e) => props.mudarTexto(e.target.value.trim())}
+          onChange={(e) => mudarTexto(e.target.value.trim())}
           onKeyDown={(e) => {
             if (
-              props.value.texto !== "" &&
-              props.value.valor > 0
+              texto !== "" &&
+              valor > 0
             ) {
               if (e.key === "Enter") {
-                props.adicionar(props.value.valor, props.value.texto);
-                props.mudarValor(0);
-                props.mudarTexto("");
+                adicionar(valor, texto);
+                mudarValor(0);
+                mudarTexto("");
               }
             }
           }}
@@ -45,33 +47,33 @@ export const EntradaDeValores = (props: Props) => {
         <TextField
           variant="standard"
           sx={{ padding: "5px" }}
-          value={props.value.valor}
+          value={valor}
           label="Digite o valor da transação:"
           type="number"
           onKeyDown={(e) => {
             if (
-              props.value.texto !== "" &&
-              props.value.valor > 0 
+              texto !== "" &&
+              valor > 0 
             ) {
               if (e.key === "Enter") {
-                props.adicionar(props.value.valor, props.value.texto);
-                props.mudarValor(0);
-                props.mudarTexto("");
+                adicionar(valor, texto);
+                mudarValor(0);
+                mudarTexto("");
               }
             }
           }}
           onChange={(e) => {
             let b = Number(e.target.value)
             if (b > 0) {
-              props.mudarValor(
+              mudarValor(
                 parseFloat(Math.sqrt(b ** 2).toFixed(2))
               );
             }
             if (b > max) {
-              props.mudarValor(max);
+              mudarValor(max);
             }
             if (b <= min) {
-              props.mudarValor(min);
+              mudarValor(min);
             }
           }}
         />

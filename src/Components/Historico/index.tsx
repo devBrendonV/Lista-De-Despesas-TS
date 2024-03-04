@@ -2,11 +2,11 @@ import { Context } from "../../Context";
 import { Box } from "@mui/material";
 import { ItemLista } from "./ItemLista";
 import { useContext } from "react";
+import { FormatoLista } from "../../types/FormatoLista";
 
 export const Historico = () => {
-  const { listaGastos } = useContext(Context);
-
-  if (listaGastos.length === 0) {
+  const context = useContext(Context);
+  if (!context || !context.listaGastos || context.listaGastos.length === 0) {
     return (
       <Box
         display={"flex"}
@@ -37,7 +37,7 @@ export const Historico = () => {
         overflow={"auto"}
         boxSizing={"border-box"}
       >
-        {listaGastos.map((e, i) => {
+        {context.listaGastos.map((e:FormatoLista, i:number) => {
           return (
             <ItemLista
               key={i}
