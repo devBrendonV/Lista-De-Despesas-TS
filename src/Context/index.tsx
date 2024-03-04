@@ -9,6 +9,7 @@ interface ContextProps {
   tipoTransacao: boolean;
   excluirTransacao: (item: FormatoLista, posicao: number)=>void
   adicionar: (valor:number,texto:string)=>void
+  alterarTipoDeTransacao: (tipo:boolean)=>void
 }
 
 export const Context = createContext<ContextProps | undefined>(undefined);
@@ -56,11 +57,14 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({
     ]);
   }
 
+const alterarTipoDeTransacao = (tipo:boolean)=>{
+  setTipoTransacao(tipo)
+}
 
 
   return (
     <Context.Provider
-      value={{ total, entrada, saida, listaGastos, tipoTransacao,excluirTransacao,adicionar }}
+      value={{ total, entrada, saida, listaGastos, tipoTransacao,excluirTransacao,adicionar,alterarTipoDeTransacao }}
     >
       {children}
     </Context.Provider>
