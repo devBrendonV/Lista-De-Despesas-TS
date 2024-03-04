@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { Content } from "./Components/Content";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
           justifyContent: "center",
           justifyitems: "center",
         }}
-      ></Box>
+      >
+        <Content />
+      </Box>
     </>
   );
 }
