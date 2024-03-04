@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-const ItemLista = (props: Props) => {
+export const ItemLista = (props: Props) => {
   return (
     <div>ItemLista</div>
   )
