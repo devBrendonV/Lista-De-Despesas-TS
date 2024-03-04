@@ -1,5 +1,5 @@
 export interface FormatoLista{
     nome:string,
-    tipoTransacao:boolean,
+    tipo:boolean,
     valor:number
 }
