@@ -12,7 +12,16 @@ interface ContextProps {
   alterarTipoDeTransacao: (tipo:boolean)=>void
 }
 
-export const Context = createContext<ContextProps | undefined>(undefined);
+export const Context = createContext<ContextProps>({
+  total: 0,
+  entrada: 0,
+  saida: 0,
+  listaGastos: [],
+  tipoTransacao: true,
+  excluirTransacao: () => {},
+  adicionar: () => {},
+  alterarTipoDeTransacao: () => {},
+});
 
 interface ContextProviderProps {
   children: ReactNode;
