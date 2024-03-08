@@ -1,10 +1,8 @@
 import FormControl from "@mui/material/FormControl";
 import { TextField } from "@mui/material";
 type Props = {
-  value: {
-    valor: number;
-    texto: string;
-  };
+  valor: number;
+  texto: string;
   adicionar: (valor: number, texto: string) => void;
   mudarValor: (valor: number) => void;
   mudarTexto: (texto: string) => void;
@@ -13,8 +11,7 @@ type Props = {
 export const EntradaDeValores = (props: Props) => {
   const max = 100000000;
   const min = 0;
-  const { valor, texto } = props.value;
-  const { adicionar, mudarValor, mudarTexto } = props;
+  const { valor, texto ,adicionar, mudarValor, mudarTexto } = props;
   return (
     <FormControl sx={{ display: "flex", width: "100%", paddingBottom: "25px" }}>
       <TextField

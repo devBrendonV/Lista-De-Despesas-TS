@@ -7,7 +7,6 @@ import AddIcon from "@mui/icons-material/Add";
 
 export const NovaTransacao = () => {
   const { adicionar, tipoTransacao } = useContext(Context);
-
   const [texto, setTexto] = useState<string>("");
   const [valor, setValor] = useState<number>(0);
 
@@ -21,7 +20,8 @@ export const NovaTransacao = () => {
       <OpcoesDeTransacao />
 
       <EntradaDeValores
-        value={{ valor: valor, texto: texto }}
+        valor={valor}
+        texto={texto}
         adicionar={(valor, texto) => adicionar(valor, texto)}
         mudarValor={(valor) => setValor(valor)}
         mudarTexto={(texto) => setTexto(texto)}

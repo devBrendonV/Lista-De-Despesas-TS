@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { FormatoLista } from "../../types/FormatoLista";
 
 export const Historico = () => {
-const {listaGastos} = useContext(Context);
+  const { listaGastos } = useContext(Context);
   if (listaGastos.length === 0) {
     return (
       <Box
@@ -37,17 +37,15 @@ const {listaGastos} = useContext(Context);
         overflow={"auto"}
         boxSizing={"border-box"}
       >
-        {listaGastos.map((e:FormatoLista, i:number) => {
+        {listaGastos.map((e: FormatoLista, i: number) => {
           return (
             <ItemLista
               key={i}
-              value={{
-                transacao: e.nome,
-                tipo: e.tipo,
-                valor: e.valor,
-                indice: i,
-                conteudo: e,
-              }}
+              transacao={e.nome}
+              tipo={e.tipo}
+              valor={e.valor}
+              indice={i}
+              conteudo={e}
             ></ItemLista>
           );
         })}

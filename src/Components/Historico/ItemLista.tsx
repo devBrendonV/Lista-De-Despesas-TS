@@ -5,19 +5,17 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { FormatoLista } from "../../types/FormatoLista";
 
 type Props = {
-  value: {
-    transacao: string;
-    tipo: boolean;
-    valor: number;
-    indice: number;
-    conteudo: FormatoLista;
-  };
+  transacao: string;
+  tipo: boolean;
+  valor: number;
+  indice: number;
+  conteudo: FormatoLista;
 };
 
 export const ItemLista = (props: Props) => {
   const { excluirTransacao } = useContext(Context);
   const [opcao, setOpcao] = useState<boolean>(false);
-  const { transacao, tipo, valor, indice, conteudo } = props.value;
+  const { transacao, tipo, valor, indice, conteudo } = props;
   return (
     <Box
       sx={{
