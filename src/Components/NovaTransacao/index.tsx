@@ -1,16 +1,12 @@
 import { useContext, useState } from "react";
 import { Context } from "../../Context";
 import { Box, Button } from "@mui/material";
-import {OpcoesDeTransacao} from "./OpcoesDeTransacao";
-import {EntradaDeValores} from "./EntradaDeValores";
+import { OpcoesDeTransacao } from "./OpcoesDeTransacao";
+import { EntradaDeValores } from "./EntradaDeValores";
 import AddIcon from "@mui/icons-material/Add";
 
 export const NovaTransacao = () => {
-  const context = useContext(Context);
-  if(!context){
-    return null
-  }
-  const { adicionar,tipoTransacao } = context;
+  const { adicionar, tipoTransacao } = useContext(Context);
 
   const [texto, setTexto] = useState<string>("");
   const [valor, setValor] = useState<number>(0);
@@ -26,16 +22,16 @@ export const NovaTransacao = () => {
 
       <EntradaDeValores
         value={{ valor: valor, texto: texto }}
-        adicionar={(valor,texto)=>adicionar(valor,texto)}
-        mudarValor={(valor)=>setValor(valor)}
-        mudarTexto={(texto)=>setTexto(texto)}
+        adicionar={(valor, texto) => adicionar(valor, texto)}
+        mudarValor={(valor) => setValor(valor)}
+        mudarTexto={(texto) => setTexto(texto)}
       />
       <Button
         startIcon={<AddIcon />}
         style={{
           color: "#180202",
           backgroundColor: `${
-            texto !== "" && valor !== 0 
+            texto !== "" && valor !== 0
               ? tipoTransacao
                 ? "#0de429"
                 : "#f70d0dd5"

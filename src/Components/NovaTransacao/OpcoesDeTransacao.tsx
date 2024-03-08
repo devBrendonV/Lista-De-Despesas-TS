@@ -7,11 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
 export const OpcoesDeTransacao = () => {
-  const context = useContext(Context);
-  if (!context) {
-    return null;
-  }
-  const { alterarTipoDeTransacao } = context;
+  const { alterarTipoDeTransacao } = useContext(Context);
   return (
     <FormControl
       sx={{

@@ -15,12 +15,8 @@ type Props = {
 };
 
 export const ItemLista = (props: Props) => {
+  const { excluirTransacao } = useContext(Context);
   const [opcao, setOpcao] = useState<boolean>(false);
-  const context = useContext(Context);
-  if (!context) {
-    return null;
-  }
-  const { excluirTransacao } = context;
   const { transacao, tipo, valor, indice, conteudo } = props.value;
   return (
     <Box
